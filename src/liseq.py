@@ -39,7 +39,6 @@ def liseq(x: Sequence[Any]) -> list[int]:
             if bit[i] == '1':
                 subseq.append((x[i], i))
         subsequences.append(subseq)
-    print(subsequences)
     longest_increasing = []
     for subseq in subsequences: 
         if is_increasing(subseq) and len(subseq) > len(longest_increasing):
@@ -47,7 +46,6 @@ def liseq(x: Sequence[Any]) -> list[int]:
     indices = []
     for i in range(len(longest_increasing)):
         indices.append(longest_increasing[i][1])
-    print(longest_increasing)
     return indices
 
 print(liseq([12, 45, 32, 65, 78, 23, 35, 45, 57]))
