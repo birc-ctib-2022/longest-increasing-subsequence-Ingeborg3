@@ -37,19 +37,17 @@ def liseq(x: Sequence[Any]) -> list[int]:
         subseq = []
         for i in range(len(x)):
             if bit[i] == '1':
-                subseq.append(x[i])
+                subseq.append((x[i], i))
         subsequences.append(subseq)
+    print(subsequences)
     longest_increasing = []
     for subseq in subsequences: 
         if is_increasing(subseq) and len(subseq) > len(longest_increasing):
             longest_increasing = subseq
     indices = []
-    for i in range(len(x)): # iterate over input seq.
-        for j in range(len(longest_increasing)): # iterate over subseq.
-            if x[i] == longest_increasing[j]:
-                indices.append(i)
+    for i in range(len(longest_increasing)):
+        indices.append(longest_increasing[i][1])
     print(longest_increasing)
     return indices
 
-# Hvorfor et ettal med? Fordi 45 er tilstede 2 gange. 
 print(liseq([12, 45, 32, 65, 78, 23, 35, 45, 57]))
